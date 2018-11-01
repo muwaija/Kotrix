@@ -1,9 +1,13 @@
+import kotlin.math.*
+
 fun main(args: Array<String>) {
-    val x = 1 - !1
-    val g = 4 + !3
+    var x = !PI
+    val x1 = !1 + 4
+    x += !2
+    val g = 4 j 3
+    val dtimesc = 3 / g
 
-
-    println(x+g)
-    println(x)
+//    println(x+g)
     println(g)
+    println(dtimesc)
 }
