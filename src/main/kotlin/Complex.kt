@@ -402,9 +402,9 @@ public operator fun Double.div(p:Complex<Double>) : Complex<Double> {
 @JvmName("IntComplexDivDoubleComplex")
 public operator fun Complex<Int>.div(c: Complex<Double>) =  this.toDouble() / c
 @JvmName("IntComplexDivFloatComplex")
-public operator fun Complex<Int>.div(c: Complex<Float>) =  this / c.toDouble()
+public operator fun Complex<Int>.div(c: Complex<Float>) =  (this / c.toDouble()).toFloat()
 @JvmName("IntComplexDivIntComplex")
-public operator fun Complex<Int>.div(c: Complex<Int>) =  this / c.toDouble()
+public operator fun Complex<Int>.div(c: Complex<Int>) =  (this / c.toDouble()).toFloat()
 //      [end] Complex<Int> / Complex<T:Number>
 
 
@@ -412,9 +412,9 @@ public operator fun Complex<Int>.div(c: Complex<Int>) =  this / c.toDouble()
 @JvmName("FloatComplexDivDoubleComplex")
 public operator fun Complex<Float>.div(c: Complex<Double>) = this.toDouble() / c
 @JvmName("FloatComplexDivFloatComplex")
-public operator fun Complex<Float>.div(c: Complex<Float>) = this / c.toDouble()
+public operator fun Complex<Float>.div(c: Complex<Float>) = (this / c.toDouble()).toFloat()
 @JvmName("FloatComplexDivIntComplex")
-public operator fun Complex<Float>.div(c: Complex<Int>) = this / c.toDouble()
+public operator fun Complex<Float>.div(c: Complex<Int>) = (this / c.toDouble()).toFloat()
 //      [end] Complex<Float> / Complex<T:Number>
 
 //      [Start] Complex<Double> / Complex<T:Number>
