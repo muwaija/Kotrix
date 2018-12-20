@@ -1,3 +1,5 @@
+package com.asnono.kotrix
+
 import kotlin.math.*
 
 
@@ -7,16 +9,16 @@ fun Complex(rel: Int, img: Int) = Complex<Int>(rel, img)
 fun Complex(rel: Float, img: Float) = Complex<Float>(rel, img)
 fun Complex(rel: Double, img: Double) = Complex<Double>(rel, img)
 
-public operator fun Int.not() = Complex(img= this.toFloat(), rel = 0f)
-public operator fun Float.not() = Complex(img=this, rel = 0f)
-public operator fun Double.not() = Complex(img=this.toFloat(),rel = 0f)
+public operator fun Int.not() = Complex(img = this.toFloat(), rel = 0f)
+public operator fun Float.not() = Complex(img = this, rel = 0f)
+public operator fun Double.not() = Complex(img = this.toFloat(), rel = 0f)
 
 @JvmName("IntComplexConjugate")
-public operator fun Complex<Int>.not() = Complex(rel, -1* img)
+public operator fun Complex<Int>.not() = Complex(rel, -1 * img)
 @JvmName("FloatComplexConjugate")
-public operator fun Complex<Float>.not() = Complex(rel, -1* img)
+public operator fun Complex<Float>.not() = Complex(rel, -1 * img)
 @JvmName("DoubleComplexConjugate")
-public operator fun Complex<Double>.not() = Complex(rel, -1* img)
+public operator fun Complex<Double>.not() = Complex(rel, -1 * img)
 
 
 @JvmName("IntComplexToFloat")
@@ -53,62 +55,62 @@ public fun Complex<Double>.t() = atan(img / rel)
 
 // [start] complex<T:Number > + Float
 @JvmName("FloatComplexPlusFloat")
-public operator fun Complex<Float>.plus(p:Float)= Complex(rel=rel+p, img = img)
+public operator fun Complex<Float>.plus(p:Float)= Complex(rel = rel + p, img = img)
 @JvmName("DoubleComplexPlusFloat")
-public operator fun Complex<Double>.plus(p:Float) = Complex(rel=rel+p, img = img)
+public operator fun Complex<Double>.plus(p:Float) = Complex(rel = rel + p, img = img)
 @JvmName("IntComplexPlusFloat")
-public operator fun Complex<Int>.plus(p:Float) = Complex(rel=rel+p, img = img.toFloat())
+public operator fun Complex<Int>.plus(p:Float) = Complex(rel = rel + p, img = img.toFloat())
 // [end] complex<T:Number > + Float
 
 
 // [start] complex<T:Number > + Int
 @JvmName("FloatComplexPlusInt")
-public operator fun Complex<Float>.plus(p:Int)= Complex(rel=rel+p, img = img)
+public operator fun Complex<Float>.plus(p:Int)= Complex(rel = rel + p, img = img)
 @JvmName("DoubleComplexPlusInt")
-public operator fun Complex<Double>.plus(p:Int) = Complex(rel=rel+p, img = img)
+public operator fun Complex<Double>.plus(p:Int) = Complex(rel = rel + p, img = img)
 @JvmName("IntComplexPlusInt")
-public operator fun Complex<Int>.plus(p:Int) = Complex(rel=rel+p, img = img.toFloat())
+public operator fun Complex<Int>.plus(p:Int) = Complex(rel = rel + p, img = img.toFloat())
 // [end] complex<T:Number > + Int
 
 
 
 // [start] complex<T:Number > + Double
 @JvmName("FloatComplexPlusDouble")
-public operator fun Complex<Float>.plus(p:Double)= Complex(rel=rel+p, img = img)
+public operator fun Complex<Float>.plus(p:Double)= Complex(rel = rel + p, img = img)
 @JvmName("DoubleComplexPlusDouble")
-public operator fun Complex<Double>.plus(p:Double) = Complex(rel=rel+p, img = img)
+public operator fun Complex<Double>.plus(p:Double) = Complex(rel = rel + p, img = img)
 @JvmName("IntComplexPlusDouble")
-public operator fun Complex<Int>.plus(p:Double) = Complex(rel=rel+p, img = img.toFloat())
+public operator fun Complex<Int>.plus(p:Double) = Complex(rel = rel + p, img = img.toFloat())
 // [end] complex<T:Number > + double
 
 
 // [start] Complex<T:Number> + Complex<T:Number>
 //      [end] Complex<Int> + Complex<T:Number>
 @JvmName("IntComplexPlusDoubleComplex")
-public operator fun Complex<Int>.plus(c: Complex<Double>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Int>.plus(c: Complex<Double>) = Complex(rel + c.rel, img + c.img)
 @JvmName("IntComplexPlusFloatComplex")
-public operator fun Complex<Int>.plus(c: Complex<Float>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Int>.plus(c: Complex<Float>) = Complex(rel + c.rel, img + c.img)
 @JvmName("IntComplexPlusIntComplex")
-public operator fun Complex<Int>.plus(c: Complex<Int>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Int>.plus(c: Complex<Int>) = Complex(rel + c.rel, img + c.img)
 //      [end] Complex<Int> + Complex<T:Number>
 
 
 //      [start] Complex<Float> + Complex<T:Number>
 @JvmName("FloatComplexPlusDoubleComplex")
-public operator fun Complex<Float>.plus(c: Complex<Double>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Float>.plus(c: Complex<Double>) = Complex(rel + c.rel, img + c.img)
 @JvmName("FloatComplexPlusFloatComplex")
-public operator fun Complex<Float>.plus(c: Complex<Float>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Float>.plus(c: Complex<Float>) = Complex(rel + c.rel, img + c.img)
 @JvmName("FloatComplexPlusIntComplex")
-public operator fun Complex<Float>.plus(c: Complex<Int>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Float>.plus(c: Complex<Int>) = Complex(rel + c.rel, img + c.img)
 //      [end] Complex<Float> + Complex<T:Number>
 
 //      [Start] Complex<Double> + Complex<T:Number>
 @JvmName("DoubleComplexPlusDoubleComplex")
-public operator fun Complex<Double>.plus(c: Complex<Double>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Double>.plus(c: Complex<Double>) = Complex(rel + c.rel, img + c.img)
 @JvmName("DoubleComplexPlusFloatComplex")
-public operator fun Complex<Double>.plus(c: Complex<Float>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Double>.plus(c: Complex<Float>) = Complex(rel + c.rel, img + c.img)
 @JvmName("DoubleComplexPlusIntComplex")
-public operator fun Complex<Double>.plus(c: Complex<Int>) = Complex(rel+c.rel, img + c.img)
+public operator fun Complex<Double>.plus(c: Complex<Int>) = Complex(rel + c.rel, img + c.img)
 //      [end] Complex<Double> + Complex<T:Number>
 // [end] Complex<T:Number> + Complex<T:Number>
 
@@ -116,59 +118,59 @@ public operator fun Complex<Double>.plus(c: Complex<Int>) = Complex(rel+c.rel, i
 
 // [start] Float + Complex<T:Number>
 @JvmName("FloatPlusIntComplex")
-public operator fun Float.plus(p:Complex<Int>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Float.plus(p: Complex<Int>) = Complex(rel = this + p.rel, img = p.img)
 @JvmName("FloatPlusFloatComplex")
-public operator fun Float.plus(p:Complex<Float>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Float.plus(p: Complex<Float>) = Complex(rel = this + p.rel, img = p.img)
 @JvmName("FloatPlusDoubleComplex")
-public operator fun Float.plus(p:Complex<Double>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Float.plus(p: Complex<Double>) = Complex(rel = this + p.rel, img = p.img)
 // [end] Float + Complex<T:Number>
 
 // [start] Int + Complex<T:Number>
 @JvmName("IntPlusIntComplex")
-public operator fun Int.plus(p:Complex<Int>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Int.plus(p: Complex<Int>) = Complex(rel = this + p.rel, img = p.img)
 @JvmName("IntPlusFloatComplex")
-public operator fun Int.plus(p:Complex<Float>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Int.plus(p: Complex<Float>) = Complex(rel = this + p.rel, img = p.img)
 @JvmName("IntPlusDoubleComplex")
-public operator fun Int.plus(p:Complex<Double>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Int.plus(p: Complex<Double>) = Complex(rel = this + p.rel, img = p.img)
 // [end] Int + Complex<T:Number>
 
 
 // [start] Double + Complex<T:Number>
 @JvmName("DoublePlusIntComplex")
-public operator fun Double.plus(p:Complex<Int>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Double.plus(p: Complex<Int>) = Complex(rel = this + p.rel, img = p.img)
 @JvmName("DoublePlusFloatComplex")
-public operator fun Double.plus(p:Complex<Float>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Double.plus(p: Complex<Float>) = Complex(rel = this + p.rel, img = p.img)
 @JvmName("DoublePlusDoubleComplex")
-public operator fun Double.plus(p:Complex<Double>) = Complex(rel=this+p.rel, img = p.img)
+public operator fun Double.plus(p: Complex<Double>) = Complex(rel = this + p.rel, img = p.img)
 // [end] Double + Complex<T:Number>
 
 // [start] Int - Complex<T:Number>
 @JvmName("IntMinusIntComplex")
-public operator fun Int.minus(p:Complex<Int>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Int.minus(p: Complex<Int>) = Complex(rel = this - p.rel, img = p.img)
 @JvmName("IntMinusFloatComplex")
-public operator fun Int.minus(p:Complex<Float>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Int.minus(p: Complex<Float>) = Complex(rel = this - p.rel, img = p.img)
 @JvmName("IntMinusDoubleComplex")
-public operator fun Int.minus(p:Complex<Double>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Int.minus(p: Complex<Double>) = Complex(rel = this - p.rel, img = p.img)
 // [start] Int - Complex<T:Number>
 
 
 // [start] Float - Complex<T:Number>
 @JvmName("FloatMinusIntComplex")
-public operator fun Float.minus(p:Complex<Int>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Float.minus(p: Complex<Int>) = Complex(rel = this - p.rel, img = p.img)
 @JvmName("FloatMinusFloatComplex")
-public operator fun Float.minus(p:Complex<Float>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Float.minus(p: Complex<Float>) = Complex(rel = this - p.rel, img = p.img)
 @JvmName("FloatMinusDoubleComplex")
-public operator fun Float.minus(p:Complex<Double>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Float.minus(p: Complex<Double>) = Complex(rel = this - p.rel, img = p.img)
 // [start] Float - Complex<T:Number>
 
 
 // [start] Double - Complex<T:Number>
 @JvmName("DoubleMinusIntComplex")
-public operator fun Double.minus(p:Complex<Int>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Double.minus(p: Complex<Int>) = Complex(rel = this - p.rel, img = p.img)
 @JvmName("DoubleMinusFloatComplex")
-public operator fun Double.minus(p:Complex<Float>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Double.minus(p: Complex<Float>) = Complex(rel = this - p.rel, img = p.img)
 @JvmName("DoubleMinusDoubleComplex")
-public operator fun Double.minus(p:Complex<Double>) = Complex(rel=this - p.rel, img = p.img)
+public operator fun Double.minus(p: Complex<Double>) = Complex(rel = this - p.rel, img = p.img)
 // [start] Double - Complex<T:Number>
 
 
@@ -209,32 +211,32 @@ public operator fun Complex<Double>.minus(c: Complex<Int>) = Complex(rel - c.rel
 
 // [start] complex<T:Number > - Float
 @JvmName("FloatComplexMinusFloat")
-public operator fun Complex<Float>.minus(p:Float)= Complex(rel=rel-p, img = img)
+public operator fun Complex<Float>.minus(p:Float)= Complex(rel = rel - p, img = img)
 @JvmName("DoubleComplexMinusFloat")
-public operator fun Complex<Double>.minus(p:Float) = Complex(rel=rel-p, img = img)
+public operator fun Complex<Double>.minus(p:Float) = Complex(rel = rel - p, img = img)
 @JvmName("IntComplexMinusFloat")
-public operator fun Complex<Int>.minus(p:Float) = Complex(rel=rel-p, img = img)
+public operator fun Complex<Int>.minus(p:Float) = Complex(rel = rel - p, img = img)
 // [end] complex<T:Number > - Float
 
 
 // [start] complex<T:Number > - Int
 @JvmName("FloatComplexMinusInt")
-public operator fun Complex<Float>.minus(p:Int)= Complex(rel=rel-p, img = img)
+public operator fun Complex<Float>.minus(p:Int)= Complex(rel = rel - p, img = img)
 @JvmName("DoubleComplexMinusInt")
-public operator fun Complex<Double>.minus(p:Int) = Complex(rel=rel-p, img = img)
+public operator fun Complex<Double>.minus(p:Int) = Complex(rel = rel - p, img = img)
 @JvmName("IntComplexMinusInt")
-public operator fun Complex<Int>.minus(p:Int) = Complex(rel=rel-p, img = img)
+public operator fun Complex<Int>.minus(p:Int) = Complex(rel = rel - p, img = img)
 // [end] complex<T:Number > - Int
 
 
 
 // [start] complex<T:Number > - Double
 @JvmName("FloatComplexMinusDouble")
-public operator fun Complex<Float>.minus(p:Double)= Complex(rel=rel-p, img = img)
+public operator fun Complex<Float>.minus(p:Double)= Complex(rel = rel - p, img = img)
 @JvmName("DoubleComplexMinusDouble")
-public operator fun Complex<Double>.minus(p:Double) = Complex(rel=rel-p, img = img)
+public operator fun Complex<Double>.minus(p:Double) = Complex(rel = rel - p, img = img)
 @JvmName("IntComplexMinusDouble")
-public operator fun Complex<Int>.minus(p:Double) = Complex(rel=rel-p, img = img)
+public operator fun Complex<Int>.minus(p:Double) = Complex(rel = rel - p, img = img)
 // [end] complex<T:Number > - double
 
 
@@ -242,31 +244,31 @@ public operator fun Complex<Int>.minus(p:Double) = Complex(rel=rel-p, img = img)
 
 // [start] Int * Complex<T:Number>
 @JvmName("IntTimesIntComplex")
-public operator fun Int.times(p:Complex<Int>) = p * this
+public operator fun Int.times(p: Complex<Int>) = p * this
 @JvmName("IntTimesFloatComplex")
-public operator fun Int.times(p:Complex<Float>) = p * this
+public operator fun Int.times(p: Complex<Float>) = p * this
 @JvmName("IntTimesDoubleComplex")
-public operator fun Int.times(p:Complex<Double>) = p * this
+public operator fun Int.times(p: Complex<Double>) = p * this
 // [start] Int * Complex<T:Number>
 
 
 // [start] Float * Complex<T:Number>
 @JvmName("FloatTimesIntComplex")
-public operator fun Float.times(p:Complex<Int>) =  p * this
+public operator fun Float.times(p: Complex<Int>) =  p * this
 @JvmName("FloatTimesFloatComplex")
-public operator fun Float.times(p:Complex<Float>) =  p * this
+public operator fun Float.times(p: Complex<Float>) =  p * this
 @JvmName("FloatTimesDoubleComplex")
-public operator fun Float.times(p:Complex<Double>) =  p * this
+public operator fun Float.times(p: Complex<Double>) =  p * this
 // [start] Float * Complex<T:Number>
 
 
 // [start] Double * Complex<T:Number>
 @JvmName("DoubleTimesIntComplex")
-public operator fun Double.times(p:Complex<Int>) =  p * this
+public operator fun Double.times(p: Complex<Int>) =  p * this
 @JvmName("DoubleTimesFloatComplex")
-public operator fun Double.times(p:Complex<Float>) =  p * this
+public operator fun Double.times(p: Complex<Float>) =  p * this
 @JvmName("DoubleTimesDoubleComplex")
-public operator fun Double.times(p:Complex<Double>) =  p * this
+public operator fun Double.times(p: Complex<Double>) =  p * this
 // [start] Double * Complex<T:Number>
 
 
@@ -304,30 +306,30 @@ public operator fun Complex<Double>.times(p:Double)  = Complex(this.rel * p, thi
 // [start] Complex<T:Number> * Complex<T:Number>
 //      [end] Complex<Int> * Complex<T:Number>
 @JvmName("IntComplexTimesDoubleComplex")
-public operator fun Complex<Int>.times(c: Complex<Double>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Int>.times(c: Complex<Double>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 @JvmName("IntComplexTimesFloatComplex")
-public operator fun Complex<Int>.times(c: Complex<Float>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Int>.times(c: Complex<Float>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 @JvmName("IntComplexTimesIntComplex")
-public operator fun Complex<Int>.times(c: Complex<Int>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Int>.times(c: Complex<Int>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 //      [end] Complex<Int> * Complex<T:Number>
 
 
 //      [start] Complex<Float> * Complex<T:Number>
 @JvmName("FloatComplexTimesDoubleComplex")
-public operator fun Complex<Float>.times(c: Complex<Double>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Float>.times(c: Complex<Double>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 @JvmName("FloatComplexTimesFloatComplex")
-public operator fun Complex<Float>.times(c: Complex<Float>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Float>.times(c: Complex<Float>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 @JvmName("FloatComplexTimesIntComplex")
 public operator fun Complex<Float>.times(c: Complex<Int>) = Complex(rel - c.rel, img - c.img)
 //      [end] Complex<Float> * Complex<T:Number>
 
 //      [Start] Complex<Double> * Complex<T:Number>
 @JvmName("DoubleComplexTimesDoubleComplex")
-public operator fun Complex<Double>.times(c: Complex<Double>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Double>.times(c: Complex<Double>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 @JvmName("DoubleComplexTimesFloatComplex")
-public operator fun Complex<Double>.times(c: Complex<Float>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Double>.times(c: Complex<Float>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 @JvmName("DoubleComplexTimesIntComplex")
-public operator fun Complex<Double>.times(c: Complex<Int>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img )
+public operator fun Complex<Double>.times(c: Complex<Int>) = Complex(rel * c.rel - img * c.img, img * c.rel + rel * c.img)
 //      [end] Complex<Double> * Complex<T:Number>
 // [end] Complex<T:Number> * Complex<T:Number>
 
@@ -362,34 +364,34 @@ public operator fun Complex<Double>.div(p:Double)  = this * (1/p)
 
 // [start] Int / Complex<T:Number>
 @JvmName("IntDivIntComplex")
-public operator fun Int.div(p:Complex<Int>) = this.toDouble() / p.toDouble()
+public operator fun Int.div(p: Complex<Int>) = this.toDouble() / p.toDouble()
 @JvmName("IntDivFloatComplex")
-public operator fun Int.div(p:Complex<Float>) = this.toDouble() / p.toDouble()
+public operator fun Int.div(p: Complex<Float>) = this.toDouble() / p.toDouble()
 @JvmName("IntDivDoubleComplex")
-public operator fun Int.div(p:Complex<Double>) = this.toDouble() / p
+public operator fun Int.div(p: Complex<Double>) = this.toDouble() / p
 // [end] Int / Complex<T:Number>
 
 
 // [start] Float / Complex<T:Number>
 @JvmName("FloatDivIntComplex")
-public operator fun Float.div(p:Complex<Int>) = this.toDouble() / p.toDouble()
+public operator fun Float.div(p: Complex<Int>) = this.toDouble() / p.toDouble()
 @JvmName("FloatDivFloatComplex")
-public operator fun Float.div(p:Complex<Float>) =  this.toDouble() / p.toDouble()
+public operator fun Float.div(p: Complex<Float>) =  this.toDouble() / p.toDouble()
 @JvmName("FloatDivDoubleComplex")
-public operator fun Float.div(p:Complex<Double>) =  this.toDouble() / p
+public operator fun Float.div(p: Complex<Double>) =  this.toDouble() / p
 // [end] Float / Complex<T:Number>
 
 
 // [start] Double / Complex<T:Number>
 @JvmName("DoubleDivIntComplex")
-public operator fun Double.div(p:Complex<Int>) =  this / p.toDouble()
+public operator fun Double.div(p: Complex<Int>) =  this / p.toDouble()
 @JvmName("DoubleDivFloatComplex")
-public operator fun Double.div(p:Complex<Float>) =  this / p.toDouble()
+public operator fun Double.div(p: Complex<Float>) =  this / p.toDouble()
 @JvmName("DoubleDivDoubleComplex")
-public operator fun Double.div(p:Complex<Double>) : Complex<Double> {
+public operator fun Double.div(p: Complex<Double>) : Complex<Double> {
     val r = this / p.r()
     val t =  -p.t()
-    return Complex(r * cos(t) , r * sin(t))
+    return Complex(r * cos(t), r * sin(t))
 }
 // [end] Double / Complex<T:Number>
 
