@@ -1,7 +1,7 @@
 package com.asnono.kotrix
 
 import java.util.*
-import kotlin.collections.ArrayList
+import kotlin.math.max
 
 
 data class Matrix<T>(val elements: ArrayList<T> = arrayListOf(), var shape: IntArray = intArrayOf(1)) {
@@ -63,7 +63,8 @@ fun matrixOf(vararg elements: ArrayList<Int>): Matrix<Int> {
     val list = arrayListOf<Int>()
     var size = 0
     elements.forEach {
-        list.plus(it)
+        list += it
+        size = max(size, it.size)
     }
     return Matrix(list, intArrayOf(1))
 }
