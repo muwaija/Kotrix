@@ -1,6 +1,9 @@
-package com.asnono.kotrix
+package com.muwaija.kotrix
 
-import kotlin.math.*
+import kotlin.math.atan
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.sqrt
 
 
 data class Complex<T : Number>(var rel:T, var img :T)

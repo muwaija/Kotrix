@@ -1,12 +1,36 @@
-package com.asnono.kotrix
+package com.muwaija.kotrix
 
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.max
 
 
-data class Matrix<T>(val elements: ArrayList<T> = arrayListOf(), var shape: IntArray = intArrayOf(1)) {
+data class Matrix<T : Number>(var elements: ArrayList<T> = arrayListOf(), var shape: IntArray = intArrayOf(1)) {
 //    var shape: IntArray = IntArray(1)
 //    var data : Array<T> = elements
+
+    init {
+
+        elements = ArrayList()
+        for (i in 0 until count()) {
+
+            elements.add(0 as T)
+        }
+    }
+
+    private fun count(): Int {
+        return count(shape)
+    }
+
+    private fun count(arg: IntArray): Int {
+        var i = 1
+
+        for (s in arg)
+            i *= s
+        println("size is $i")
+        return i
+
+    }
 
 
 
@@ -14,14 +38,7 @@ data class Matrix<T>(val elements: ArrayList<T> = arrayListOf(), var shape: IntA
     operator fun get(vararg arg: Int): T {
 
 
-        val total = {
-            var t = 1
-            for (i in arg)
-               t *= i
-            t
-        }
-
-        val required = total()
+        val required = getIndex(arg)
         if (required > elements.size)
             throw IndexOutOfBoundsException("Index Out Of Bound")
 
@@ -29,9 +46,19 @@ data class Matrix<T>(val elements: ArrayList<T> = arrayListOf(), var shape: IntA
 
     }
 
-    fun set(i: Int, d: T) {
-        elements.add(i,d)
+    operator fun set(vararg i: Int, d: T) {
+        elements[getIndex(i)] = d
     }
+
+    private fun getIndex(i: IntArray): Int {
+        var c = 0
+        for (x in 0 until i.size - 1) {
+            c += shape[x] * i[x]
+        }
+        c += i.last()
+        return c
+    }
+
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -49,6 +76,24 @@ data class Matrix<T>(val elements: ArrayList<T> = arrayListOf(), var shape: IntA
         var result = elements.hashCode()
         result = 31 * result + Arrays.hashCode(shape)
         return result
+    }
+
+
+    override fun toString(): String {
+        val out = StringBuilder()
+
+//        if (shape.size == 2)
+        for (x in 0 until shape[0]) {
+            out.append("[")
+            for (y in 0 until shape[1]) {
+                out.append(this[x, y])
+                out.append(" ,")
+            }
+
+            out.append("]\n")
+        }
+
+        return out.toString() //super.toString()
     }
 
 }
@@ -74,9 +119,9 @@ public operator fun Matrix<Int>.plus(p : Matrix<Int>): Matrix<Int> {
     if (!this.shape.contentEquals(p.shape))
         throw Exception("Array size error : cannot sum ${this.shape} with ${p.shape}")
 
-    val res = Matrix<Int>(shape=shape)
+    val res = Matrix<Int>(shape = shape)
     for (i in  0 until elements.size ) {
-        res.set(i,this[i] + p[i])
+        res[i] = this[i] + p[i]
 
     }
 

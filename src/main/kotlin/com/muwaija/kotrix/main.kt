@@ -1,8 +1,31 @@
-package com.asnono.kotrix
+package com.muwaija.kotrix
 
+import java.util.*
 import kotlin.math.PI
 
 fun main(args: Array<String>) {
+
+//    val img = Image.imread("/Users/useruser/Downloads/86.jpg")
+//    println()
+//    println()
+//    println()
+//    println(img)
+
+    val matrix = Matrix<Float>(shape = intArrayOf(3, 3))
+
+    val rand = Random()
+
+    for (x in 0..2) {
+        for (y in 0..2) {
+            matrix[x, y] = rand.nextFloat()
+        }
+    }
+
+    println(matrix)
+
+
+    return
+
     var test1 = !PI
     val test2 = !5 + 7
     test1 += !2
@@ -20,8 +43,8 @@ fun main(args: Array<String>) {
 
     val a = ArrayList<ArrayList<Int>>()
     val a2 = matrixOf(
-            arrayListOf(1,2,3,4),
-            arrayListOf(1,2,3,4)
+            arrayListOf(1, 2, 3, 4),
+            arrayListOf(1, 2, 3, 4)
     )
 
     println(a2.elements.toString())
@@ -30,5 +53,6 @@ fun main(args: Array<String>) {
     val r2 = arrayListOf(1,2,3,4)
     val r3 = r + r2
     println(r3)
+
 
 }
