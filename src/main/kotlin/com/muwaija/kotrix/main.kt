@@ -1,58 +1,52 @@
 package com.muwaija.kotrix
 
-import java.util.*
-import kotlin.math.PI
+import com.muwaija.kotrix.image.Image
+import com.muwaija.kotrix.image.convolution3d
+import java.awt.Component
+import java.awt.Frame
+import java.awt.Graphics
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
+import java.io.File
+import javax.imageio.ImageIO
 
 fun main(args: Array<String>) {
 
-//    val img = Image.imread("/Users/useruser/Downloads/86.jpg")
-//    println()
-//    println()
-//    println()
-//    println(img)
+    val kernel1 = matrixOf(
+//            -1.0, -1.0, -1.0, -1.0, -1.0,
+//            -1.0,  2.0,  2.0,  2.0, -1.0,
+//            -1.0,  2.0,  8.0,  2.0, -1.0,
+//            -1.0,  2.0,  2.0,  2.0, -1.0,
+//            -1.0, -1.0, -1.0, -1.0, -1.0
 
-    val matrix = Matrix<Float>(shape = intArrayOf(3, 3))
-
-    val rand = Random()
-
-    for (x in 0..2) {
-        for (y in 0..2) {
-            matrix[x, y] = rand.nextFloat()
-        }
-    }
-
-    println(matrix)
-
-
-    return
-
-    var test1 = !PI
-    val test2 = !5 + 7
-    test1 += !2
-    val test3 = 4 j  3
-    val test4 = 3 / test3
-    val test5 = test2 / test3
-    println(test3)
-    println(test4)
-    println("Test 1 : $test1")
-    println("Test 2 : $test2")
-    println("Test 3 : $test3")
-    println("Test 4 = 3/test2 : $test4")
-    println("Test 5 : test2/test3 $test5")
-    println("Test 5 : test2/test3 ${test5.toInt()}")
-
-    val a = ArrayList<ArrayList<Int>>()
-    val a2 = matrixOf(
-            arrayListOf(1, 2, 3, 4),
-            arrayListOf(1, 2, 3, 4)
+            1.0, 0.0, -1.0,
+            2.0, 0.0, -2.0,
+            1.0, 0.0, -1.0
     )
 
-    println(a2.elements.toString())
+    kernel1.shape = intArrayOf(3, 3)
 
-    val r = arrayListOf(1,2,3,4)
-    val r2 = arrayListOf(1,2,3,4)
-    val r3 = r + r2
-    println(r3)
+    val image = Image.imread("/Users/useruser/bitmap.png")!!
+    Image.imwrite(convolution3d(image.toDouble(), kernel1).map(0, 255).toInt(), "/Users/useruser/bitmapimg1233.png")
+
+    val imge = ImageIO.read(File("/Users/useruser/bitmapimg1233.png"))
+    val f = Frame("Hello world")
+    f.setSize(600, 600)
+    f.add(object : Component() {
+        override fun paint(g: Graphics?) {
+            super.paint(g)
+            g?.drawImage(imge, 0, 0, null)
+        }
+    })
+
+    f.addWindowListener(object : WindowAdapter() {
+        override fun windowClosing(e: WindowEvent?) {
+            super.windowClosing(e)
+            System.exit(0)
+        }
+    })
+    f.isVisible = true
+
 
 
 }
