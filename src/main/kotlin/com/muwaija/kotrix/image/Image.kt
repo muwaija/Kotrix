@@ -2,13 +2,12 @@ package com.muwaija.kotrix.image
 
 import com.muwaija.kotrix.Matrix
 import com.muwaija.kotrix.logger
-import javafx.application.Application
-import javafx.embed.swing.SwingFXUtils
-import javafx.scene.Scene
-import javafx.scene.image.ImageView
-import javafx.scene.layout.VBox
-import javafx.stage.Stage
 import java.awt.Color
+import java.awt.Component
+import java.awt.Frame
+import java.awt.Graphics
+import java.awt.event.WindowAdapter
+import java.awt.event.WindowEvent
 import java.awt.image.BufferedImage
 import java.io.File
 import java.nio.file.Files
@@ -87,7 +86,7 @@ object Image {
                     val blue = a[x, y, 2]
                     val alpha = a[x, y, 3]
 //                        logger.info("Color = $red, $green, $blue")
-                    outputImage.setRGB(x, y, Color(red, green, blue, 255).rgb)
+                    outputImage.setRGB(x, y, Color(red, green, blue, alpha).rgb)
                 }
             }
 //            }
@@ -95,16 +94,16 @@ object Image {
 
             for (y in 0 until height) {
                 for (x in 0 until width) {
-
-                    val red = bound((a[x, y] * 255).toInt(), 256)
-                    val green = bound((a[x, y] * 255).toInt(), 256)
-                    val blue = bound((a[x, y] * 255).toInt(), 256)
-                    outputImage.setRGB(x, y, red shl 16 or (green shl 8) or blue or -0x01000000)
+                    val red = a[x, y, 0]
+                    val green = a[x, y, 1]
+                    val blue = a[x, y, 2]
+                    val alpha = a[x, y, 3]
+//                    outputImage.setRGB(x, y, red shl 16 or (green shl 8) or blue or -0x01000000)
+                    outputImage.setRGB(x, y, Color(red, green, blue, alpha).rgb)
                 }
             }
         }
 
-        println("finish Writing an image")
 
         if (ImageIO.write(outputImage, "PNG", File(path)))
             logger.info("Image has saved")
@@ -114,7 +113,7 @@ object Image {
     }
 
 
-    fun imshow(img: Matrix<Double>) {
+    fun imshow(img: Matrix<Int>) {
 
         val width = img.shape[0]
         val height = img.shape[1]
@@ -124,38 +123,54 @@ object Image {
         for (x in 0 until width) {
             for (y in 0 until height) {
 
-                val red = bound((img[x, y, 0] * 255).toInt(), 256)
-                val green = bound((img[x, y, 1] * 255).toInt(), 256)
-                val blue = bound((img[x, y, 2] * 255).toInt(), 256)
-                val alpha = bound((img[x, y, 3] * 255).toInt(), 256)
-                logger.info("Color = $red, $green, $blue")
+                val red = img[x, y, 0]
+                val green = img[x, y, 1]
+                val blue = img[x, y, 2]
+                val alpha = img[x, y, 3]
                 bufferedImage.setRGB(x, y, Color(red, green, blue, alpha).rgb)
-//                bufferedImage.setRGB(x, y, Color.CYAN.rgb)
             }
         }
 
 
-        val s = ShowImage()
-        s.image = bufferedImage
-        s.show(bufferedImage)
+        ShowImage(bufferedImage)
+
+
     }
 
-    class ShowImage : Application() {
-        //        companion object {
-        var image: BufferedImage? = null
+    private class ShowImage(image: BufferedImage) : Frame() {
+        init {
+            val margin = 20
 
-        override fun start(stage: Stage) {
-            val image = ImageView()
-            if (this.image != null)
-                image.image = SwingFXUtils.toFXImage(this.image, null)
-            stage.scene = Scene(VBox(image))
-            stage.show()
+            setSize(image.tileWidth + margin, image.tileHeight * 105 / 100 + margin)
+            add(Image(image))
+            isVisible = true
+
+            addWindowListener(object : WindowAdapter() {
+                override fun windowClosing(e: WindowEvent?) {
+                    super.windowClosing(e)
+                    System.exit(0)
+                }
+            })
+
         }
 
-        fun show(image: BufferedImage): Unit {
-            this.image = image
-            launch()
-//            }
+
+    }
+
+    private class Image(var image: BufferedImage? = null) : Component() {
+
+        init {
+            setSize(image?.width ?: 0, image?.height ?: 0)
         }
+
+        override fun paint(g: Graphics?) {
+            super.paint(g)
+            val margin = 10
+            if (image != null) {
+                g?.drawImage(image, margin, margin, image?.width ?: 0+margin, image?.height ?: 0+margin, null)
+            }
+        }
+
+
     }
 }
