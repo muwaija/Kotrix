@@ -40,7 +40,7 @@ data class Matrix<T : Number>(var elements: ArrayList<T> = arrayListOf(), var sh
 
 
         val required = getIndex(arg)
-        if (required > elements.size)
+        if (required > elements.size || shape.size < arg.size)
             throw IndexOutOfBoundsException("Index Out Of Bound")
 
         return elements[required]
@@ -48,7 +48,11 @@ data class Matrix<T : Number>(var elements: ArrayList<T> = arrayListOf(), var sh
     }
 
     operator fun set(vararg i: Int, d: T) {
-        elements[getIndex(i)] = d
+        val required = getIndex(i)
+        if (required > elements.size || shape.size < i.size)
+            throw IndexOutOfBoundsException("Index Out Of Bound")
+
+        elements[required] = d
     }
 
     private fun getIndex(i: IntArray): Int {

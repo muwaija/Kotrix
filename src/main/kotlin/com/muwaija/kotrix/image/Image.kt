@@ -77,7 +77,6 @@ object Image {
         val outputImage = BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
         logger.info("Depth = $depth")
         if (depth != 0) {
-//            for (z in 0 until  depth) {
             for (y in 0 until height) {
                 for (x in 0 until width) {
 
@@ -85,11 +84,9 @@ object Image {
                     val green = a[x, y, 1]
                     val blue = a[x, y, 2]
                     val alpha = a[x, y, 3]
-//                        logger.info("Color = $red, $green, $blue")
                     outputImage.setRGB(x, y, Color(red, green, blue, alpha).rgb)
                 }
             }
-//            }
         } else {
 
             for (y in 0 until height) {

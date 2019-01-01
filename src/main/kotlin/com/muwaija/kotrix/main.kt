@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
 
     val image = Image.imread("/Users/useruser/bitmap.png")!!
     val conved = convolution3d(image.toDouble(), kernel1).map(0, 255).toInt()
-    Image.imwrite(conved, "/Users/useruser/bitmapimg1233.png")
+    Image.imwrite(conved, "/Users/useruser/bitmapimg1234.png")
     Image.imshow(image)
     Image.imshow(conved)
     val imge = ImageIO.read(File("/Users/useruser/bitmapimg1233.png"))
