@@ -47,6 +47,14 @@ data class Matrix<T : Number>(var elements: ArrayList<T> = arrayListOf(), var sh
 
     }
 
+    operator fun get(range: IntRange) {
+        val list = Matrix<T>()
+
+        for (i in range) {
+            list.elements.add(this[i])
+        }
+    }
+
     operator fun set(vararg i: Int, d: T) {
         val required = getIndex(i)
         if (required > elements.size || shape.size < i.size)
@@ -70,6 +78,8 @@ data class Matrix<T : Number>(var elements: ArrayList<T> = arrayListOf(), var sh
         return c
     }
 
+
+    fun dimension() = shape.size
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -112,7 +122,7 @@ data class Matrix<T : Number>(var elements: ArrayList<T> = arrayListOf(), var sh
 }
 
 // [START Matrix operations]
-
+// [START Division operator]
 public operator fun Matrix<Float>.div(x: Float): Matrix<Float> {
     val res = Matrix<Float>(shape = shape)
     for (i in 0 until elements.size)
@@ -127,7 +137,8 @@ public operator fun Matrix<Double>.div(x: Double): Matrix<Double> {
     return res
 }
 
-
+// [END Division operator]
+// [START Plus operator]
 @JvmName("FloatMatrixPlusInt")
 public operator fun Matrix<Float>.plus(x: Int): Matrix<Float> {
     val res = Matrix<Float>(shape = shape)
@@ -203,6 +214,8 @@ public operator fun Matrix<Int>.plus(x: Double): Matrix<Double> {
     return res
 }
 
+// [END Plus operator]
+// [START Minuse operator]
 // Minus
 @JvmName("FloatMatrixMinusInt")
 public operator fun Matrix<Float>.minus(x: Int): Matrix<Float> {
@@ -278,7 +291,7 @@ public operator fun Matrix<Int>.minus(x: Double): Matrix<Double> {
 
     return res
 }
-
+// [END Minus operator]
 
 // [END Matrix operations]
 
