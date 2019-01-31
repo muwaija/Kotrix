@@ -1,6 +1,7 @@
 package com.muwaija.kotrix
 
 import com.sun.istack.internal.logging.Logger
+import jdk.nashorn.internal.runtime.regexp.joni.exception.ValueException
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.max
@@ -190,10 +191,31 @@ public operator fun Matrix<Double>.times(x: Float) = this * x.toDouble()
  * **************************************
  */
 
-infix fun Matrix<Int>.matMul(x: Matrix<Int>) {
+infix fun Matrix<Int>.matMul(x: Matrix<Int>): Matrix<Int> {
+    if (!checkCanMul(shape, x.shape))
+        throw ValueException("The matrix must be 2-d , or use times ( * ) for element by element multiplication")
 
+    val result = Matrix<Int>(shape = intArrayOf(shape[0], x.shape[1]))
+    for (i in 0 until shape[0]) {
+        for (j in 0 until x.shape[1]) {
+            for (d in 0 until x.shape[0]) {
+                result[i, j] += this[i, d] * x[d, j]
+            }
+        }
+    }
+
+    return result
 }
 
+private fun checkCanMul(size1: IntArray, size2: IntArray): Boolean {
+    if (size1.size > 2 || size2.size > 2)
+        return false
+
+    if (size1[1] != size2[0])
+        return false
+
+    return true
+}
 
 // [END Multiplication operator]
 

@@ -3,12 +3,12 @@ package com.muwaija.kotrix
 fun main(args: Array<String>) {
 
     val c1 = matrixOf(
-            1, 2, 3,
-            4, 5, 6,
-            7, 8, 9
+            1, 2,
+            4, 5,
+            7, 8
     )
 
-    c1.shape = intArrayOf(3, 3)
+    c1.shape = intArrayOf(3, 2)
 
     val c2 = matrixOf(
             1, 2, 3,
@@ -18,13 +18,8 @@ fun main(args: Array<String>) {
 
     c2.shape = intArrayOf(3, 3)
 
+    val c3 = c2 matMul c1
 
-    val c3 = c1 f c2
-
-
-}
-
-
-infix fun <T : Number> Matrix<T>.f(v: Matrix<T>) {
+    println(c3.toString())
 
 }
