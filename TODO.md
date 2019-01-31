@@ -1,6 +1,6 @@
 # Todo function:
 
-1. Matrix<Complex>
+1. Matrix\<Complex\>
 1. Matrix get for multi range selection --> matrix\[ range1, range2 ... etc \]
 1. Matrix multiplication
 1. Matrix multiplication element wise
